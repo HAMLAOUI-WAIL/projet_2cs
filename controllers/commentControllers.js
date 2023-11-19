@@ -5,6 +5,50 @@ import paginate from "../util/paginate.js";
 const cooldown = new Set();
 
 
+// export const createComment = async (req, res) => {
+//   try {
+//     const postId = req.params.postId;
+//     // console.log(postId);
+//     const { content, parentId, userId } = req.body;
+//     // console.log(req.body);
+//     // alert(10);
+
+//     const post = await Post.findById(postId);
+
+//     if (!post) {
+//       throw new Error("Post not found");
+//     }
+
+//     if (cooldown.has(userId)) {
+//       throw new Error(
+//         "You are commenting too frequently. Please try again shortly."
+//       );
+//     }
+
+//     cooldown.add(userId);
+//     setTimeout(() => {
+//       cooldown.delete(userId);
+//     }, 30000);
+
+//     const comment = await Comment.create({
+//       content,
+//       parent: parentId,
+//       post: postId,
+//       commenter: userId,
+//     });
+
+//     post.commentCount += 1;
+
+//     await post.save();
+
+//     await Comment.populate(comment, { path: "commenter", select: "-password" });
+
+//     return res.json(comment);
+//   } catch (err) {
+//     return res.status(400).json({ error: err.message });
+//   }
+// };
+
 export const createComment = async (req, res) => {
   try {
     const postId = req.params.id;

@@ -23,6 +23,8 @@ const io = new Server(httpServer, {
   },
 });
 
+mongoose.set('strictQuery', true);
+
 io.use(authSocket);
 io.on("connection", (socket) => socketServer(socket));
 

@@ -24,11 +24,16 @@ const CommentEditor = ({ label, comment, addComment, setReplying }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    // alert("hiiiiiiiiii")
     const body = {
       ...formData,
       parentId: comment && comment._id,
     };
+    console.log("comment ",comment);
+    console.log("comment_id ", comment && comment._id);
+    console.log("body.parentId",body.parentId);
+    console.log("label ",label);
+    console.log("addComment ",addComment);
 
     setLoading(true);
     const data = await createComment(body, params, isLoggedIn());
@@ -55,7 +60,7 @@ const CommentEditor = ({ label, comment, addComment, setReplying }) => {
             {comment ? <>Reply</> : <>Comment</>}
           </Typography>
           <Typography>
-            <a href="https://commonmark.org/help/" target="_blank">
+            <a href="" target="_blank">
               Markdown Help
             </a>
           </Typography>

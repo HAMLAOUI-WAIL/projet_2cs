@@ -44,7 +44,7 @@ const Comment = (props) => {
     await updateComment(comment._id, user, { content });
 
     const newCommentData = { ...comment, content, edited: true };
-
+    console.log("newCommentData ",newCommentData)
     setComment(newCommentData);
 
     editComment(newCommentData);

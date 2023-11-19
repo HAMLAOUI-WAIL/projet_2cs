@@ -5,14 +5,16 @@ import {updateComment,createComment,deleteComment,getPostComments,getUserComment
 
 const router = express.Router();
 
-router.patch("/:id", verifyToken, updateComment);
-
-router.post("/post/:postId", verifyToken, createComment);
+// router.patch("/:id", verifyToken, updateComment);
+// router.post("/comments/post/:postId", verifyToken, createComment);
 
 router.delete("/:id", verifyToken, deleteComment);
 
-router.get("/post/:postId", getPostComments);
+router.get("/post/:id", getPostComments);
 
-router.get("/user/:userId", getUserComments);
+router.get("/user/:id", getUserComments);
+
+router.patch("/:id", verifyToken, updateComment);
+router.post("/:id", verifyToken, createComment);
 
 export default router;

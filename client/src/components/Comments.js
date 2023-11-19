@@ -13,13 +13,14 @@ const Comments = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const params = useParams();
-
+  // console.log("params ",params)
   const fetchComments = async () => {
     const data = await getComments(params);
     if (data.error) {
       setError("Failed to fetch comments");
     } else {
       setComments(data);
+      console.log("data ",data)
     }
   };
 
@@ -83,6 +84,8 @@ const Comments = () => {
   };
 
   const addComment = (comment) => {
+    console.log("comment.parent ",comment.parent);
+
     if (comment.parent) {
       console.log(comment.parent);
       const parentComment = findComment(comment.parent);
@@ -92,13 +95,15 @@ const Comments = () => {
     } else {
       setComments([comment, ...comments]);
     }
+    console.log("comments without comment.parent ",comments);
   };
 
   return comments ? (
     <Stack spacing={2}>
+      
       <CommentEditor
         addComment={addComment}
-        label="What are your thoughts on this post?"
+        label="What are your thoughts on this post?11"
       />
 
       {comments.length > 0 ? (
